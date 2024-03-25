@@ -22,7 +22,8 @@ namespace ChoosingWeapons
         public static void setKstate(KeyboardState state){ kstate = state; }
 
         public static int Time;
-        public static void setTime(GameTime gt) { Time = (int)gt.ElapsedGameTime.TotalSeconds; }
+        public static GameTime gameTime;
+        public static void setTime(GameTime gt) { Time = (int)gt.ElapsedGameTime.TotalSeconds; gameTime = gt; }
 
         public static SpriteBatch sb;
         public static ContentManager Content;

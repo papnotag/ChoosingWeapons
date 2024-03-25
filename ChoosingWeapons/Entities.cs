@@ -21,5 +21,25 @@ namespace ChoosingWeapons
                 player.Draw();
             }
         }
+
+        public static List<Arrow> Arrows = new List<Arrow>();
+        public static void AddArrow(params Arrow[] arrs)
+        {
+            for (int i = 0; i < arrs.Length; i++) Arrows.Add(arrs[i]);
+        }
+        public static void DrawArrows()
+        {
+            foreach(Arrow a in Arrows)
+            {
+                a.Draw();
+            }
+        }
+        public static void UpdateArrows()
+        {
+            foreach(Arrow a in Arrows)
+            {
+                a.Update();
+            }
+        }
     }
 }

@@ -28,12 +28,15 @@ namespace ChoosingWeapons
             Globals.sb = new SpriteBatch(GraphicsDevice);
             Globals.Content = Content;
 
-            Textures.addGunTexture("Pistol", "Rifle", "Sniper", "Knife");
+            Textures.LoadGunTexture("Pistol", "Rifle", "Sniper", "Knife");
+            Textures.LoadOtherTexture("Arrow");
             Player p = new Player();
             Player p2 = new Player();
             Player p3 = new Player();
             Player p4 = new Player();
             Entities.AddPlayer(p, p2, p3, p4);
+            Arrow a = new Arrow(0);
+            Entities.AddArrow(a);
         }
 
         protected override void Update(GameTime gameTime)
@@ -41,9 +44,11 @@ namespace ChoosingWeapons
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-
             Globals.setKstate(Keyboard.GetState());
             Globals.setTime(gameTime);
+
+            Entities.UpdateArrows();
+
             base.Update(gameTime);
         }
 
@@ -54,6 +59,7 @@ namespace ChoosingWeapons
             Globals.sb.Begin();
 
             Entities.DrawPlayers();
+            Entities.DrawArrows();
 
             Globals.sb.End();
 
